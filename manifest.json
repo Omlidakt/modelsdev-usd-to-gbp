@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Models.dev: USD → GBP",
+  "version": "1.0.0",
+  "description": "Converts $ prices on models.dev into £ using live or custom USD→GBP rate.",
+  "permissions": ["storage", "alarms"],
+  "host_permissions": ["https://open.er-api.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "USD → GBP",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://models.dev/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
